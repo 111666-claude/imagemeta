@@ -366,6 +366,11 @@ type Options struct {
 
 	tagCount *uint32
 	cancel   chan struct{}
+
+	// reportOversizedTags, when set, makes the EXIF and IPTC decoders emit a
+	// warning for tags skipped because their value exceeds LimitTagSize.
+	// Ordinary Decode callers skip such tags silently as before.
+	reportOversizedTags bool
 }
 
 func (o Options) isCancelled() bool {
